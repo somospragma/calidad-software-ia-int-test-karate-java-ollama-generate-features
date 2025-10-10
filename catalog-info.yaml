@@ -1,0 +1,19 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+# https://backstage.io/docs/features/software-catalog/descriptor-format/#common-to-all-kinds-the-metadata
+metadata:
+  name: component-name
+  description: description
+  # https://backstage.io/docs/features/software-catalog/well-known-annotations
+  annotations:
+    backstage.io/managed-by-location: url:https://github.com/somospragma/plantilla-readme/blob/main/catalog-info.yaml
+    backstage.io/source-template: template:default/component-name
+    backstage.io/techdocs-ref: dir:.
+# https://backstage.io/docs/features/software-catalog/descriptor-format/#spectype-required    
+spec:
+  type: infrastructure
+  lifecycle: production
+  owner: pragma
+  dependsOn: # Opcional
+    - component:default/other-component-name 

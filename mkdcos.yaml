@@ -1,0 +1,11 @@
+site_name: 'REPOSITORY_NAME-docs'
+nav:
+  - Home: index.md
+  - Topicos: topicos.md
+  - Tecnologias: tecnologias.md
+  - Consideraciones: consideraciones.md
+  - Descarga: descarga.md
+  - Instalación y ejecución: instalacion.md
+  - Tests: tests.md
+plugins:
+  - techdocs-core
