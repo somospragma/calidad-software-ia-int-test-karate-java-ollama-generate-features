@@ -5,13 +5,13 @@
 ### Opción 1: Git Clone (Recomendado)
 ```bash
 # HTTPS
-git clone https://github.com/pragma/contract-to-feature-generator.git
+git clone https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
 
 # SSH
-git clone git@github.com:pragma/contract-to-feature-generator.git
+git clone git@github.com:somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
 
 # Entrar al directorio
-cd contract-to-feature-generator
+cd calidad-software-ia-ollama-generate-karate-int-test
 ```
 
 **Ventajas:**
@@ -24,11 +24,11 @@ cd contract-to-feature-generator
 ### Opción 2: Descargar ZIP
 ```bash
 # Descargar última versión
-wget https://github.com/pragma/contract-to-feature-generator/archive/refs/heads/main.zip
+wget https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test/archive/refs/heads/main.zip
 
 # Extraer
 unzip main.zip
-cd contract-to-feature-generator-main
+cd calidad-software-ia-ollama-generate-karate-int-test-main
 ```
 
 **Ventajas:**
@@ -40,14 +40,14 @@ cd contract-to-feature-generator-main
 ### Opción 3: Release Específica
 ```bash
 # Ver releases disponibles
-# https://github.com/pragma/contract-to-feature-generator/releases
+# https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test/releases
 
 # Descargar release específica
-wget https://github.com/pragma/contract-to-feature-generator/archive/refs/tags/v1.0.0.zip
+wget https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test/archive/refs/tags/v1.0.0.zip
 
 # Extraer
 unzip v1.0.0.zip
-cd contract-to-feature-generator-1.0.0
+cd calidad-software-ia-ollama-generate-karate-int-test-1.0.0
 ```
 
 **Ventajas:**
@@ -60,8 +60,8 @@ cd contract-to-feature-generator-1.0.0
 
 ### 1. Descargar
 ```bash
-git clone https://github.com/pragma/contract-to-feature-generator.git
-cd contract-to-feature-generator
+git clone https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
+cd calidad-software-ia-ollama-generate-karate-int-test
 ```
 
 ### 2. Configurar
@@ -86,7 +86,7 @@ nano src/main/resources/config.properties
 
 ## 📦 Contenido del Repositorio
 ```
-contract-to-feature-generator/
+calidad-software-ia-ollama-generate-karate-int-test/
 ├── 📄 README.md                          # Documentación principal
 ├── 📄 LICENSE                            # Licencia MIT
 ├── 📄 .gitignore                         # Archivos ignorados
@@ -174,7 +174,7 @@ Antes de descargar, asegúrate de tener:
 
 ### Si descargaste con Git:
 ```bash
-cd contract-to-feature-generator
+cd calidad-software-ia-ollama-generate-karate-int-test
 git pull origin main
 ./gradlew clean build
 ```
@@ -185,7 +185,7 @@ git pull origin main
 cp src/main/resources/config.properties ~/config.backup
 
 # 2. Descargar nuevo ZIP
-wget https://github.com/pragma/contract-to-feature-generator/archive/main.zip
+wget https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test/archive/main.zip
 
 # 3. Extraer y reemplazar
 unzip -o main.zip
@@ -204,24 +204,24 @@ cp ~/config.backup src/main/resources/config.properties
 ### Preparar en máquina con internet:
 ```bash
 # 1. Clonar proyecto
-git clone https://github.com/pragma/contract-to-feature-generator.git
-cd contract-to-feature-generator
+git clone https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
+cd calidad-software-ia-ollama-generate-karate-int-test
 
 # 2. Descargar dependencias
 ./gradlew build
 
 # 3. Crear bundle
-tar -czf contract-generator-bundle.tar.gz \
+tar -czf karate-generator-bundle.tar.gz \
     ./* \
     ~/.gradle/caches/modules-2/files-2.1/  # Dependencias
 
-# 4. Transferir contract-generator-bundle.tar.gz a máquina sin internet
+# 4. Transferir karate-generator-bundle.tar.gz a máquina sin internet
 ```
 
 ### Instalar en máquina sin internet:
 ```bash
 # 1. Extraer
-tar -xzf contract-generator-bundle.tar.gz
+tar -xzf karate-generator-bundle.tar.gz
 
 # 2. Copiar dependencias a ~/.gradle/
 cp -r modules-2/files-2.1/ ~/.gradle/caches/modules-2/
@@ -237,19 +237,19 @@ cp -r modules-2/files-2.1/ ~/.gradle/caches/modules-2/
 ### Descargar imagen:
 ```bash
 # Pull desde Docker Hub (cuando esté disponible)
-docker pull pragma/contract-generator:latest
+docker pull somospragma/karate-generator:latest
 
 # O build local
-git clone https://github.com/pragma/contract-to-feature-generator.git
-cd contract-to-feature-generator
-docker build -t contract-generator .
+git clone https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
+cd calidad-software-ia-ollama-generate-karate-int-test
+docker build -t karate-generator .
 ```
 
 ### Ejecutar:
 ```bash
 docker run -v $(pwd)/contracts:/app/contracts \
            -v $(pwd)/output:/app/output \
-           contract-generator
+           karate-generator
 ```
 
 ---
@@ -262,8 +262,8 @@ docker run -v $(pwd)/contracts:/app/contracts \
 ```bash
    # Instalar Termux desde F-Droid
    pkg install git openjdk-17
-   git clone https://github.com/pragma/contract-to-feature-generator.git
-   cd contract-to-feature-generator
+   git clone https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
+   cd calidad-software-ia-ollama-generate-karate-int-test
    ./gradlew build
 ```
 
@@ -271,7 +271,7 @@ docker run -v $(pwd)/contracts:/app/contracts \
 ```bash
    # Instalar iSH desde App Store
    apk add git openjdk17
-   git clone https://github.com/pragma/contract-to-feature-generator.git
+   git clone https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
 ```
 
 ---
@@ -281,16 +281,16 @@ docker run -v $(pwd)/contracts:/app/contracts \
 ### Verificar checksum (cuando esté disponible):
 ```bash
 # SHA256
-sha256sum contract-generator-1.0.0.zip
-# Comparar con: https://github.com/pragma/.../releases/SHA256SUMS
+sha256sum karate-generator-1.0.0.zip
+# Comparar con: https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test/releases/SHA256SUMS
 
 # MD5
-md5sum contract-generator-1.0.0.zip
+md5sum karate-generator-1.0.0.zip
 ```
 
 ### Verificar firma GPG (cuando esté disponible):
 ```bash
-gpg --verify contract-generator-1.0.0.zip.sig contract-generator-1.0.0.zip
+gpg --verify karate-generator-1.0.0.zip.sig karate-generator-1.0.0.zip
 ```
 
 ---
@@ -301,17 +301,17 @@ gpg --verify contract-generator-1.0.0.zip.sig contract-generator-1.0.0.zip
 ```bash
 # Usar mirror o proxy
 git clone --config http.proxy=http://proxy:8080 \
-  https://github.com/pragma/contract-to-feature-generator.git
+  https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
 ```
 
 ### Error: "Repository not found"
 ```bash
 # Verificar URL
 # Debe ser exactamente:
-https://github.com/pragma/contract-to-feature-generator.git
+https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
 
 # Si es privado, usar SSH:
-git clone git@github.com:pragma/contract-to-feature-generator.git
+git clone git@github.com:somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
 ```
 
 ### Error: "Permission denied (publickey)"
@@ -373,6 +373,6 @@ Una vez descargado:
 ## 📞 Soporte de Descarga
 
 **Problemas con descarga:**
-- GitHub Issues: https://github.com/pragma/contract-to-feature-generator/issues
+- GitHub Issues: https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test/issues
 - Email: qa-team@pragma.com.co
-- Slack: #contract-generator
+- Slack: #karate-generator

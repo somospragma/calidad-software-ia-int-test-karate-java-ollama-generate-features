@@ -1,4 +1,10 @@
-# Contract-to-Feature Generator
+<h1 style="text-align: center;">
+  <br>
+  <a href="#"><img src="https://f.hubspotusercontent20.net/hubfs/2829524/Copia%20de%20LOGOTIPO_original-2.png" alt="Logo Pragma"></a>
+  <br>
+  calidad-software-ia-ollama-generate-karate-int-test
+  <br>
+</h1>
 
 <div align="center">
   <img src="https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=java" alt="Java 17">
@@ -9,7 +15,26 @@
 
 ## 🎯 Descripción
 
-**Contract-to-Feature Generator** es una herramienta de automatización QA que transforma contratos de API (OpenAPI 3.0) en archivos `.feature` ejecutables de Karate, reduciendo el tiempo de creación de casos de prueba de horas a minutos.
+**calidad-software-ia-ollama-generate-karate-int-test** es una herramienta de automatización QA que transforma contratos de API (OpenAPI 3.0) en archivos `.feature` ejecutables de Karate, reduciendo el tiempo de creación de casos de prueba de horas a minutos.
+
+<p style="text-align: center;">
+  <a href="consideraciones.md">Tópicos</a> •
+  <a href="tecnologias.md">Tecnologías</a> •
+  <a href="consideraciones.md">Consideraciones</a> •
+  <a href="descarga.md">Descarga</a> •
+  <a href="instalacion.md">Instalación y ejecución</a> •
+  <a href="#autores">Autores</a> •
+  <a href="#relacionados">Relacionados</a> •
+  <a href="#roadmap">Roadmap</a>
+</p>
+
+![Demo del proyecto](assests/images/demo/demo.gif)
+
+
+## Autores
+
+<img src="assests/images/author/unnamed.png" width=115><br><sub>Mateo Arroyave Quintero<br>Auxiliar De Calidad De Software</sub>
+
 
 ### Problema que Resuelve
 
@@ -174,14 +199,10 @@ Nuevos QAs generan pruebas complejas desde día 1
 - [Tecnologías](tecnologias.md)
 - [Instalación](instalacion.md)
 - [Consideraciones](consideraciones.md)
-- [Tests](tests.md)
 
 ---
 
-## 🤝 Contribuir
 
-Ver guía de contribución en el repositorio.
+## Roadmap
 
-## 📄 Licencia
-
-MIT - Pragma 2025
+- [Guía QA](https://github.com/orgs/somospragma/repositories?q=qa) - (En construcción) Una guía de proyectos Orientados a la Calidad de Software

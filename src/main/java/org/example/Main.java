@@ -36,17 +36,17 @@ public class Main {
             LOGGER.info("📄 Paso 1/5: Parseando contrato YAML...");
             YamlContractParser parser = new YamlContractParser();
             ApiContract contract = parser.parse(contractPath);
-            LOGGER.info("✅ Contrato parseado:");
+            LOGGER.info("Contrato parseado:");
             LOGGER.info("  - Título: {}", contract.getTitle());
             LOGGER.info("  - Versión: {}", contract.getVersion());
             LOGGER.info("  - Endpoints: {}", contract.getEndpoints().size());
             LOGGER.info("");
 
             // 3. Generar escenarios base
-            LOGGER.info("🔨 Paso 2/5: Generando escenarios base...");
+            LOGGER.info("Paso 2/5: Generando escenarios base...");
             ScenarioGenerator generator = new ScenarioGenerator();
             List<KarateScenario> scenarios = generator.generateAll(contract);
-            LOGGER.info("✅ Escenarios generados: {}", scenarios.size());
+            LOGGER.info("Escenarios generados: {}", scenarios.size());
 
             // Desglose por endpoint
             List<KarateScenario> finalScenarios = scenarios;
@@ -61,32 +61,32 @@ public class Main {
 
             // 4. Enriquecer con IA
             if (useIA) {
-                LOGGER.info("🤖 Paso 3/5: Enriqueciendo escenarios con IA...");
+                LOGGER.info("Paso 3/5: Enriqueciendo escenarios con IA...");
                 ScenarioEnricher enricher = new ScenarioEnricher();
                 scenarios = enricher.enrich(scenarios, contract);
                 LOGGER.info("");
             } else {
-                LOGGER.info("⏭️  Paso 3/5: Saltando enriquecimiento con IA");
+                LOGGER.info("Paso 3/5: Saltando enriquecimiento con IA");
                 LOGGER.info("");
             }
 
             // 5. Generar archivo .feature
-            LOGGER.info("📝 Paso 4/5: Generando archivo .feature...");
+            LOGGER.info("Paso 4/5: Generando archivo .feature...");
             KarateTemplateEngine templateEngine = new KarateTemplateEngine();
             String featureContent = templateEngine.generateFeature(contract, scenarios);
             LOGGER.info("");
 
             // 6. Escribir archivo
-            LOGGER.info("💾 Paso 5/5: Escribiendo archivo...");
+            LOGGER.info("Paso 5/5: Escribiendo archivo...");
             FeatureFileWriter writer = new FeatureFileWriter();
             writer.write(featureContent, outputPath);
             LOGGER.info("");
 
             // Resumen final
             LOGGER.info("═══════════════════════════════════════════");
-            LOGGER.info("✅ GENERACIÓN COMPLETADA EXITOSAMENTE");
+            LOGGER.info("GENERACIÓN COMPLETADA EXITOSAMENTE");
             LOGGER.info("═══════════════════════════════════════════");
-            LOGGER.info("📊 Resumen:");
+            LOGGER.info("Resumen:");
             LOGGER.info("  - Endpoints procesados: {}", contract.getEndpoints().size());
             LOGGER.info("  - Escenarios generados: {}", scenarios.size());
             LOGGER.info("  - Archivo: {}", outputPath);

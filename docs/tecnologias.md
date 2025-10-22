@@ -36,7 +36,6 @@ public record Endpoint(
 ```bash
 ./gradlew build      # Compilar
 ./gradlew run        # Ejecutar
-./gradlew test       # Tests
 ./gradlew clean      # Limpiar
 ```
 
@@ -202,27 +201,6 @@ ollama pull mistral
 - Llama 2 (más rápido)
 - CodeLlama (especializado en código)
 
----
-
-## 🧪 Testing
-
-### JUnit 5
-**Versión:** 5.10.1
-```gradle
-testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
-```
-
-**Ejemplo:**
-```java
-@Test
-void testParseBasicContract() {
-    YamlContractParser parser = new YamlContractParser();
-    ApiContract contract = parser.parse("test-api.yml");
-
-    assertEquals("Test API", contract.getTitle());
-    assertEquals(3, contract.getEndpoints().size());
-}
-```
 
 ---
 

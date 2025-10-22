@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: contract-to-feature-generator
+  name: calidad-software-ia-ollama-generate-karate-int-test.git
   description: |
     Herramienta que genera automáticamente archivos .feature de Karate 
     a partir de contratos OpenAPI 3.0, con enriquecimiento mediante IA (Ollama/Mistral).
@@ -17,7 +17,7 @@ metadata:
     - ia
     - ollama
   links:
-    - url: https://github.com/pragma/contract-to-feature-generator
+    - url: https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
       title: Repositorio GitHub
       icon: github
     - url: https://github.com/karatelabs/karate
@@ -44,7 +44,7 @@ spec:
   # Definición técnica
   definition:
     $text: |
-      # Contract-to-Feature Generator
+      # calidad-software-ia-ollama-generate-karate-int-test
       
       Generador automatizado de casos de prueba funcionales en formato Karate,
       a partir de especificaciones OpenAPI/Swagger.

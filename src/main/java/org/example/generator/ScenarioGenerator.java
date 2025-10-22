@@ -17,7 +17,6 @@ public class ScenarioGenerator {
     public ScenarioGenerator() {
         this.strategies = new ArrayList<>();
 
-        // Cargar estrategias según configuración
         if (Boolean.parseBoolean(ConfigReader.getPropertyByKey("GenerateHappyPath"))) {
             strategies.add(new HappyPathStrategy());
         }

@@ -132,8 +132,8 @@ OllamaURI=http://localhost:11434/api/generate
 **Archivo:** `config.properties`
 ```properties
 # Rutas
-ContractPath=src/main/resources/contracts/api.yml
-OutputPath=src/test/resources/features/generated.feature
+ContractPath=src/test/resources/org.example/contract/example-api.yml
+OutputPath=src/test/resources/org.example/features/generated-api.feature
 
 # IA
 UseIA=true
@@ -194,17 +194,6 @@ Cada escenario recibe tags según su tipo:
 | `@edgeCase` | Casos límite | Robustez |
 | `@regression` | Todos | Suite completa |
 
-**Uso en ejecución:**
-```bash
-# Solo smoke tests
-mvn test -Dkarate.options="--tags @smoke"
-
-# Solo validaciones
-mvn test -Dkarate.options="--tags @validation"
-
-# Excluir edge cases
-mvn test -Dkarate.options="--tags ~@edgeCase"
-```
 
 ---
 

@@ -122,8 +122,8 @@ curl http://localhost:11434/api/tags
 ### Opción 1: Clonar desde Git
 ```bash
 # 1. Clonar repositorio
-git clone https://github.com/pragma/contract-to-feature-generator.git
-cd contract-to-feature-generator
+git clone https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.git
+cd calidad-software-ia-ollama-generate-karate-int-test
 
 # 2. Verificar estructura
 ls -la
@@ -144,11 +144,11 @@ chmod +x gradlew
 ### Opción 2: Descargar ZIP
 ```bash
 # 1. Descargar desde GitHub
-# https://github.com/pragma/contract-to-feature-generator/archive/main.zip
+#  https://github.com/somospragma/calidad-software-ia-ollama-generate-karate-int-test.zip
 
 # 2. Extraer
-unzip contract-to-feature-generator-main.zip
-cd contract-to-feature-generator-main
+unzip calidad-software-ia-ollama-generate-karate-int-test.zip
+cd calidad-software-ia-ollama-generate-karate-int-test
 
 # 3. Continuar con paso 3 de Opción 1
 ```
@@ -190,11 +190,11 @@ EOF
 ### 2. Agregar Tu Contrato
 ```bash
 # Copiar tu contrato YAML
-cp /path/to/mi-api.yml src/main/resources/contracts/
+cp /path/to/mi-api.yml src/test/resources/org.example/contract/
 
 # Actualizar config.properties
 nano src/main/resources/config.properties
-# Cambiar: ContractPath=src/main/resources/contracts/mi-api.yml
+# Cambiar: ContractPath=src/test/resources/org.example/contract/example-api.yml
 ```
 
 ---
@@ -202,11 +202,11 @@ nano src/main/resources/config.properties
 ### 3. Configurar Rutas de Salida
 ```properties
 # Para un solo servicio
-OutputPath=src/test/resources/features/mi-api.feature
+OutputPath=src/test/resources/org.example/features/generated-api.feature
 
 # Para múltiples servicios
-OutputPath=src/test/resources/features/users-api.feature
-OutputPath=src/test/resources/features/products-api.feature
+OutputPath=src/test/resources/org.example/features/generated-api.feature
+OutputPath=src/test/resources/org.example/features/generated-users.feature
 ```
 
 ---
@@ -227,51 +227,6 @@ IA=Mistral
 # ollama serve
 ```
 
----
-
-## 🔧 Configuración Avanzada
-
-### Variables de Entorno (Alternativa a config.properties)
-```bash
-# Linux/Mac - Agregar a ~/.bashrc o ~/.zshrc
-export CONTRACT_PATH="src/main/resources/contracts/api.yml"
-export OUTPUT_PATH="src/test/resources/features/api.feature"
-export USE_IA="true"
-export OLLAMA_URI="http://localhost:11434/api/generate"
-
-# Windows - PowerShell
-$env:CONTRACT_PATH="src\main\resources\contracts\api.yml"
-$env:OUTPUT_PATH="src\test\resources\features\api.feature"
-```
-
-**Modificar ConfigReader.java:**
-```java
-public static String getPropertyByKey(String key) {
-    // Primero buscar en variables de entorno
-    String envValue = System.getenv(key.toUpperCase().replace(".", "_"));
-    if (envValue != null) return envValue;
-    
-    // Luego en properties
-    return properties.getProperty(key);
-}
-```
-
----
-
-### Configuración por Perfil
-```bash
-# Crear perfiles
-src/main/resources/
-├── config.properties              # Default
-├── config-dev.properties          # Development
-├── config-staging.properties      # Staging
-└── config-prod.properties         # Production
-```
-
-**Ejecutar con perfil:**
-```bash
-./gradlew run -Dconfig.profile=dev
-```
 
 ---
 
@@ -434,38 +389,6 @@ ollama list
 
 ---
 
-## 📦 Instalación en Docker (Alternativa)
-```dockerfile
-# Dockerfile
-FROM gradle:8.5-jdk17 AS builder
-WORKDIR /app
-COPY . .
-RUN gradle build
-
-FROM openjdk:17-slim
-WORKDIR /app
-COPY --from=builder /app/build/libs/*.jar app.jar
-COPY --from=builder /app/src/main/resources /app/resources
-
-# Si se usa IA, instalar Ollama
-# RUN curl -fsSL https://ollama.com/install.sh | sh
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
-```
-
-**Build y Run:**
-```bash
-# Build imagen
-docker build -t contract-generator .
-
-# Run
-docker run -v $(pwd)/contracts:/app/contracts \
-           -v $(pwd)/output:/app/output \
-           contract-generator
-```
-
----
-
 ## 🔄 Actualización
 
 ### Actualizar el Proyecto
@@ -529,68 +452,13 @@ ollama pull mistral
     - Main class: `org.example.Main`
     - Working directory: raíz del proyecto
 
----
 
-### VS Code
-
-1. **Instalar extensiones:**
-```bash
-   # Extension Pack for Java
-   code --install-extension vscjava.vscode-java-pack
-   
-   # Gradle for Java
-   code --install-extension vscjava.vscode-gradle
-```
-
-2. **Abrir proyecto:**
-```bash
-   code /path/to/contract-to-feature-generator
-```
-
-3. **Run:**
-    - F5 → Seleccionar "Java"
-    - Seleccionar `Main.java`
-
----
-
-### Eclipse
-
-1. **Importar proyecto:**
-    - File → Import → Gradle → Existing Gradle Project
-    - Seleccionar carpeta
-
-2. **Configurar JDK:**
-    - Window → Preferences → Java → Installed JREs
-    - Add → Standard VM → Seleccionar JDK 17
-
-3. **Run:**
-    - Right-click en `Main.java` → Run As → Java Application
-
----
-
-## ✅ Checklist Final
-
-Antes de ejecutar por primera vez:
-
-- [ ] Java 17+ instalado (`java -version`)
-- [ ] Gradle funciona (`./gradlew --version`)
-- [ ] Git instalado (`git --version`)
-- [ ] Proyecto clonado y en carpeta correcta
-- [ ] `config.properties` existe y está configurado
-- [ ] Contrato YAML copiado a `src/main/resources/contracts/`
-- [ ] Si UseIA=true: Ollama instalado y corriendo
-- [ ] Si UseIA=true: Mistral descargado (`ollama list`)
-- [ ] Build exitoso (`./gradlew build`)
-- [ ] Primera ejecución exitosa (`./gradlew run`)
-
----
 
 ## 🎓 Próximos Pasos
 
 1. ✅ [Ver ejemplos de uso](../README.md#ejemplos)
-2. ✅ [Ejecutar tests](tests.md)
-3. ✅ [Leer consideraciones](consideraciones.md)
-4. ✅ [Revisar tecnologías](tecnologias.md)
+2. ✅ [Leer consideraciones](consideraciones.md)
+3. ✅ [Revisar tecnologías](tecnologias.md)
 
 ---
 
@@ -599,4 +467,4 @@ Antes de ejecutar por primera vez:
 Si tienes problemas:
 1. Revisar [Troubleshooting](#troubleshooting-de-instalación)
 2. Consultar [Issues en GitHub](https://github.com/pragma/contract-to-feature-generator/issues)
-3. Contactar al equipo QA
+3. Contactar al equipo QA mateo.arroyave@pragma.com.co 

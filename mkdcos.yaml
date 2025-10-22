@@ -1,82 +1,13 @@
-site_name: Contract-to-Feature Generator
-site_description: Generador automático de archivos .feature de Karate desde contratos OpenAPI
-site_author: Pragma QA Team
-site_url: https://pragma.github.io/contract-to-feature-generator
-
-repo_name: pragma/contract-to-feature-generator
-repo_url: https://github.com/pragma/contract-to-feature-generator
-
-theme:
-  name: material
-  language: es
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Cambiar a modo oscuro
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Cambiar a modo claro
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.expand
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.code.copy
-    - content.tabs.link
-
-plugins:
-  - search:
-      lang: es
-  - git-revision-date-localized:
-      enable_creation_date: true
-
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - attr_list
-  - md_in_html
-  - tables
-
+site_name: 'calidad-software-ia-ollama-generate-karate-int-test.git'
+# La directiva 'docs_dir: docs' es la predeterminada,
+# así que MkDocs buscará los archivos .md dentro de una carpeta 'docs'
+# en la raíz del proyecto, y el 'README.md' de la raíz se usará como 'index.md'.
 nav:
-  - Inicio: index.md
-  - Guías:
-      - Tópicos y Características: topicos.md
-      - Tecnologías: tecnologias.md
-      - Instalación: instalacion.md
-      - Descarga: descarga.md
-  - Desarrollo:
-      - Tests: tests.md
-      - Consideraciones: consideraciones.md
-  - API Reference:
-      - JavaDoc: javadoc/index.html
-
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/pragma
-    - icon: fontawesome/brands/slack
-      link: https://pragma.slack.com
-  version:
-    provider: mike
+  - Home: index.md
+  - Tópicos: consideraciones.md # En tu README, "Tópicos" enlaza a docs/consideraciones.md
+  - Tecnologías: tecnologias.md
+  - Consideraciones: consideraciones.md # En tu README, "Consideraciones" también enlaza a docs/consideraciones.md
+  - Descarga: descarga.md
+  - Instalación y ejecución: instalacion.md # Nombre del archivo según tu README
+plugins:
+  - techdocs-core
