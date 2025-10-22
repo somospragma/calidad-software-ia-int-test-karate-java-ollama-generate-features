@@ -1,64 +1,187 @@
-`<h1 align="center">
-  <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://f.hubspotusercontent20.net/hubfs/2829524/Copia%20de%20LOGOTIPO_original-2.png"></a>
-  <br>
-  Nombre del Proyecto
-  <br>
-</h1>
+# Contract-to-Feature Generator
 
-<p align="center">
-  <a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">
-    <img src="https://img.shields.io/badge/Java-11+-orange.svg" alt="Java">
-  </a>
-  <a href="https://www.mysql.com/">
-    <img src="https://img.shields.io/badge/Database-MySQL-blue.svg" alt="MySQL">
-  </a>
-  <a href="https://www.postgresql.org/">
-    <img src="https://img.shields.io/badge/Database-PostgreSQL-blue.svg" alt="PostgreSQL">
-  </a>
-  <a href="https://www.w3schools.com/sql/">
-    <img src="https://img.shields.io/badge/SQL-Fundamentals-lightgrey.svg" alt="SQL">
-  </a>
-  <a href="https://cucumber.io/">
-    <img src="https://img.shields.io/badge/Cucumber-BDD-green.svg" alt="Cucumber">
-  </a>
-  <a href="https://serenity-bdd.info/">
-    <img src="https://img.shields.io/badge/Serenity-Reporting-blueviolet.svg" alt="Serenity">
-  </a>
-  <a href="https://www.selenium.dev/">
-    <img src="https://img.shields.io/badge/Selenium-Web_Testing-brightgreen.svg" alt="Selenium">
-  </a>
-</p>
+<div align="center">
+  <img src="https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=java" alt="Java 17">
+  <img src="https://img.shields.io/badge/Karate-Framework-green?style=for-the-badge" alt="Karate">
+  <img src="https://img.shields.io/badge/Ollama-Mistral-blue?style=for-the-badge&logo=llama" alt="Ollama">
+  <img src="https://img.shields.io/badge/OpenAPI-3.0-85EA2D?style=for-the-badge&logo=swagger" alt="OpenAPI">
+</div>
 
-Redacta aca una breve descripcion del proyecto...
+## 🎯 Descripción
 
-<p align="center">
-  <a href="#topicos">Topicos</a> •`
-  <a href="#tecnologias">Tecnologias</a> •
-  <a href="#consideraciones">Consideraciones</a> •
-  <a href="#descarga">Descarga</a> •
-  <a href="#instalación-y-ejecución">Instalación y ejecución</a> •
-  <a href="#autores">Autores</a> •
-  <a href="#relacionados">Relacionados</a> •
-  <a href="#roadmap">Roadmap</a>
-</p>
+**Contract-to-Feature Generator** es una herramienta de automatización QA que transforma contratos de API (OpenAPI 3.0) en archivos `.feature` ejecutables de Karate, reduciendo el tiempo de creación de casos de prueba de horas a minutos.
 
-El siguiente GIF es de ejemplo, si tienes uno propio reemplazalo, de lo contrario eliminalo.
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+### Problema que Resuelve
 
+En proyectos con múltiples APIs, crear manualmente casos de prueba para cada endpoint es:
+- ⏰ Lento y repetitivo
+- ❌ Propenso a errores humanos
+- 📉 Inconsistente entre equipos
+- 🔄 Difícil de mantener
 
-## Autores
+### Solución
 
+Generación automatizada de escenarios de prueba completos:
+- ✅ Happy paths
+- ✅ Validaciones de campos
+- ✅ Manejo de errores (4xx, 5xx)
+- ✅ Edge cases y límites
+- 🤖 Enriquecimiento con IA (opcional)
 
-| [<img src="https://gitlab.com/uploads/-/system/user/avatar/13437423/avatar.png?width=400" width=115><br><sub>Mauro L. Ibarra P.</sub>](https://gitlab.com/mauro.ibarrap) <br/> | [<img src="https://secure.gravatar.com/avatar/23b2db02403d79ebd356e8e8356758ec?s=192&d=identicon" width=115><br><sub>Otro autor</sub>](https://gitlab.com/) | 
-:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+---
 
+## 🚀 Inicio Rápido
+```bash
+# 1. Clonar repositorio
+git clone <repo-url>
+cd contract-to-feature-generator
 
-## Relacionados
+# 2. Configurar contrato
+cp mi-api.yml src/main/resources/contracts/
 
-- [proyecto-base-serenity-bdd-screenplay-browsers-and-utilities](https://github.com/somospragma/qa-web-proyecto-base-serenity-bdd-screenplay-browsers-and-utilities)
+# 3. Editar configuración
+nano src/main/resources/config.properties
 
+# 4. Ejecutar
+./gradlew run
+```
 
-## Roadmap
+**Resultado:** Archivo `.feature` generado en `src/test/resources/features/`
 
-- [Guia QA](https://github.com/orgs/somospragma/repositories?q=qa) - (En construcción) Una guia de proyectos Orientados a la Calidad de Software
+---
+
+## 📊 Ejemplo
+
+### Entrada: `api-contract.yml`
+```yaml
+paths:
+  /users:
+    post:
+      summary: Crear usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, email]
+              properties:
+                username:
+                  type: string
+                  minLength: 3
+                email:
+                  type: string
+                  format: email
+```
+
+### Salida: `users-api.feature`
+```gherkin
+Feature: Users API
+
+  @smoke @happyPath
+  Scenario: Crear usuario - Happy Path
+    * def requestBody = { username: 'john', email: 'john@test.com' }
+    Given url baseUrl + '/users'
+    And request requestBody
+    When method POST
+    Then status 201
+    And match response.id == '#uuid'
+
+  @validation
+  Scenario: Validar error cuando falta username
+    * def requestBody = { email: 'john@test.com' }
+    Given url baseUrl + '/users'
+    And request requestBody
+    When method POST
+    Then status 400
+```
+
+**Tiempo de creación:** ~5 segundos para 12+ escenarios
+
+---
+
+## 🏗️ Arquitectura
+```
+┌─────────────────┐
+│  Contrato YML   │
+│  (OpenAPI 3.0)  │
+└────────┬────────┘
+         │
+         v
+┌─────────────────┐
+│  YAML Parser    │ ◄── SnakeYAML + Jackson
+└────────┬────────┘
+         │
+         v
+┌─────────────────┐
+│ Modelo Interno  │ ◄── Endpoints, Parameters, Schemas
+└────────┬────────┘
+         │
+         v
+┌─────────────────┐
+│   Estrategias   │ ◄── Happy Path, Validations, Errors, Edge Cases
+└────────┬────────┘
+         │
+         v
+┌─────────────────┐
+│ Enriquecimiento │ ◄── Ollama + Mistral (opcional)
+│       IA        │
+└────────┬────────┘
+         │
+         v
+┌─────────────────┐
+│ Feature Writer  │
+└────────┬────────┘
+         │
+         v
+    .feature
+   (Karate DSL)
+```
+
+---
+
+## 📦 Componentes Principales
+
+| Componente | Responsabilidad |
+|-----------|-----------------|
+| **YamlContractParser** | Parsea contratos OpenAPI |
+| **ScenarioGenerator** | Orquesta la generación de escenarios |
+| **Estrategias** | Implementan lógica de cada tipo de prueba |
+| **MistralEnricher** | Enriquece escenarios con IA |
+| **KarateTemplateEngine** | Genera sintaxis Karate |
+| **FeatureFileWriter** | Escribe archivos finales |
+
+---
+
+## 🎓 Casos de Uso
+
+### Caso 1: Microservicios
+Generar pruebas para 10+ microservicios en minutos
+
+### Caso 2: Regresión
+Actualizar pruebas automáticamente cuando cambia el contrato
+
+### Caso 3: Estandarización
+Asegurar consistencia en pruebas de todo el equipo QA
+
+### Caso 3: Onboarding
+Nuevos QAs generan pruebas complejas desde día 1
+
+---
+
+## 📚 Documentación Adicional
+
+- [Tecnologías](tecnologias.md)
+- [Instalación](instalacion.md)
+- [Consideraciones](consideraciones.md)
+- [Tests](tests.md)
+
+---
+
+## 🤝 Contribuir
+
+Ver guía de contribución en el repositorio.
+
+## 📄 Licencia
+
+MIT - Pragma 2025

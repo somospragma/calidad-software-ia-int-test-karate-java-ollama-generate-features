@@ -1,19 +1,63 @@
-# https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-component
 apiVersion: backstage.io/v1alpha1
 kind: Component
-# https://backstage.io/docs/features/software-catalog/descriptor-format/#common-to-all-kinds-the-metadata
 metadata:
-  name: component-name
-  description: description
-  # https://backstage.io/docs/features/software-catalog/well-known-annotations
+  name: contract-to-feature-generator
+  description: |
+    Herramienta que genera automáticamente archivos .feature de Karate 
+    a partir de contratos OpenAPI 3.0, con enriquecimiento mediante IA (Ollama/Mistral).
   annotations:
-    backstage.io/managed-by-location: url:https://github.com/somospragma/plantilla-readme/blob/main/catalog-info.yaml
-    backstage.io/source-template: template:default/component-name
+    github.com/project-slug: pragma/contract-to-feature-generator
     backstage.io/techdocs-ref: dir:.
-# https://backstage.io/docs/features/software-catalog/descriptor-format/#spectype-required    
+  tags:
+    - java
+    - karate
+    - testing
+    - openapi
+    - automation
+    - ia
+    - ollama
+  links:
+    - url: https://github.com/pragma/contract-to-feature-generator
+      title: Repositorio GitHub
+      icon: github
+    - url: https://github.com/karatelabs/karate
+      title: Karate Framework
+      icon: docs
+    - url: https://ollama.com/
+      title: Ollama
+      icon: dashboard
+
 spec:
-  type: infrastructure
-  lifecycle: production
-  owner: pragma
-  dependsOn: # Opcional
-    - component:default/other-component-name 
+  type: tool
+  lifecycle: experimental
+  owner: qa-team
+  system: testing-automation
+  
+  # Dependencias
+  dependsOn:
+    - resource:ollama-service
+  
+  # APIs que consume
+  consumesApis:
+    - ollama-api
+  
+  # Definición técnica
+  definition:
+    $text: |
+      # Contract-to-Feature Generator
+      
+      Generador automatizado de casos de prueba funcionales en formato Karate,
+      a partir de especificaciones OpenAPI/Swagger.
+      
+      ## Características
+      - Parser de contratos YAML (OpenAPI 3.0)
+      - Generación multi-estrategia (Happy Path, Validaciones, Errores, Edge Cases)
+      - Enriquecimiento con IA local (Ollama + Mistral)
+      - Sintaxis Karate DSL lista para ejecutar
+      
+      ## Stack Tecnológico
+      - Java 17
+      - Gradle 8.x
+      - SnakeYAML, Jackson
+      - SLF4J + Logback
+      - Ollama (Mistral)

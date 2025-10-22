@@ -1,0 +1,63 @@
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea
+.idea/workspace.xml
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+/eval "$(ssh-agent -s)"
+/eval "$(ssh-agent -s)".pub
+/mine
+/mine.pub
+/target/cucumber-html-reports/
+/target/
+/src/test/resources/target/karate-reports/
+/.idea/
+.idea/misc.xml
+.idea/vcs.xml
+.idea/gradle.xml
+/src/main/resources/application.yml
+/.sonarlint/connectedMode.json
+
+# Node.js
+node_modules/
+package-lock.json
+/arduino
+src/test/resources/target/**/*/

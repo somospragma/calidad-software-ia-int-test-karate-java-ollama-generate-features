@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info:
+  title: Users API
+  version: 1.0.0
+  description: API para gestión de usuarios
+
+servers:
+  - url: https://api.example.com/v1
+    description: Servidor de producción
+
+paths:
+  /users:
+    post:
+      summary: Crear nuevo usuario
+      operationId: createUser
+      tags:
+        - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - email
+              properties:
+                username:
+                  type: string
+                  minLength: 3
+                  maxLength: 20
+                  description: Nombre de usuario único
+                  example: johndoe
+                email:
+                  type: string
+                  format: email
+                  description: Email del usuario
+                  example: john@example.com
+                age:
+                  type: integer
+                  minimum: 18
+                  maximum: 120
+                  description: Edad del usuario
+                  example: 25
+      responses:
+        '201':
+          description: Usuario creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  username:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                  createdAt:
+                    type: string
+                    format: date-time
+        '400':
+          description: Datos de entrada inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Usuario ya existe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /users/{userId}:
+    get:
+      summary: Obtener usuario por ID
+      operationId: getUserById
+      tags:
+        - users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: ID del usuario
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  username:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                  age:
+                    type: integer
+                  createdAt:
+                    type: string
+                    format: date-time
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Actualizar usuario
+      operationId: updateUser
+      tags:
+        - users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  minLength: 3
+                  maxLength: 20
+                email:
+                  type: string
+                  format: email
+                age:
+                  type: integer
+                  minimum: 18
+                  maximum: 120
+      responses:
+        '200':
+          description: Usuario actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  updatedAt:
+                    type: string
+                    format: date-time
+        '400':
+          description: Datos inválidos
+        '404':
+          description: Usuario no encontrado
+
+    delete:
+      summary: Eliminar usuario
+      operationId: deleteUser
+      tags:
+        - users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Usuario eliminado
+        '404':
+          description: Usuario no encontrado
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: string
