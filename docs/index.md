@@ -15,7 +15,7 @@
 
 ## 🎯 Descripción
 
-**calidad-software-ia-ollama-generate-karate-int-test** es una herramienta de automatización QA que transforma contratos de API (OpenAPI 3.0) en archivos `.feature` ejecutables de Karate, reduciendo el tiempo de creación de casos de prueba de horas a minutos.
+**calidad-software-ia-int-test-karate-java-ollama-generate-features** es una herramienta de automatización QA que transforma contratos de API (OpenAPI 3.0) en archivos `.feature` ejecutables de Karate, reduciendo el tiempo de creación de casos de prueba de horas a minutos.
 
 <p style="text-align: center;">
   <a href="consideraciones.md">Tópicos</a> •
