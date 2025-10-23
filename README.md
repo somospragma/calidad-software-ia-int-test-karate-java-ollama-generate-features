@@ -20,11 +20,11 @@ Este repositorio cuenta con la siguiente estructura base para su documentación:
 
 ### catalog-info.yaml
 
-Este archivo es necesario pensando en una plataforma de ingeniería [(Backstage)](https://backstage.io/docs/overview/what-is-backstage), con la intención de centralizar y visualizar todos los repositorios de una manera diferente a lo que puede proveer Github. Dentro del mismo documento se encontrarán enlaces a la documentación oficial que indicará el significado de cada uno de los parámetros solicitados (recuerda actualizar su contenido).
+Este archivo es necesario pensando en una plataforma de ingeniería [(Backstage)](https://backstage.io/docs/overview/what-is-backstage), con la intención de centralizar y visualizar todos los repositorios de una manera diferente a lo que puede proveer Github. Dentro del mismo documento se encontrarán enlaces a la documentación oficial que indicará el significado de cada uno de los parámetros solicitados.
 
 ### /docs
 
-Dentro de la carpeta docs se encontrarán las diferentes partes de un readme con un pequeño ejemplo dentro de cada una de ellas (recuerda actualizar su contenido).
+Dentro de la carpeta docs se encontrarán las diferentes partes de un readme con un pequeño ejemplo dentro de cada una de ellas.
 
 ### mkdocs.yaml
 
