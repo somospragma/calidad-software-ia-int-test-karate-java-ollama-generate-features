@@ -2,7 +2,7 @@
   <br>
   <a href="#"><img src="https://f.hubspotusercontent20.net/hubfs/2829524/Copia%20de%20LOGOTIPO_original-2.png" alt="Logo Pragma"></a>
   <br>
-  calidad-software-ia-ollama-generate-karate-int-test
+  calidad-software-ia-int-test-karate-java-ollama-generate-features
   <br>
 </h1>
 
